@@ -17,7 +17,7 @@ export default function MenuDetail() {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView >
       <View style={styles.container}>
         <Text style={styles.label}>Name: {foodDetail.name}</Text>
         <Text style={styles.label}>Description: {foodDetail.description}</Text>
