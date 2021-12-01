@@ -1,4 +1,4 @@
-import {useNavigation} from '@react-navigation/core';
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {SafeAreaView, FlatList} from 'react-native';
 import ProductCard from '../../../components/cards/ProductCard/';

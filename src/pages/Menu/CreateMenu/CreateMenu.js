@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useNavigation, useRoute} from '@react-navigation/core';
-import {SafeAreaView, Text} from 'react-native';
+import {Alert, SafeAreaView, Text} from 'react-native';
 
 import Input from '../../../components/Input';
 import Button from '../../../components/Button';
@@ -15,21 +15,32 @@ export default function CreateMenu() {
   const [price, setPrice] = useState();
 
   const route = useRoute();
+  const {menu} = route.params;
 
   function handleNavigateDetail() {
-    const fd = {
+    if (
+      name === undefined ||
+      description === undefined ||
+      ingredients === undefined ||
+      price === undefined
+    ) {
+      Alert.alert('Alanlar Boş Geçilemez');
+      return;
+    }
+    
+    const foodDetail = {
       name: name,
       description: description,
       ingredients: ingredients,
       price: price,
     };
 
-    navigation.navigate('MenuDetailPage', {fd});
+    navigation.navigate('MenuDetailPage', {foodDetail});
   }
 
   return (
     <SafeAreaView>
-      <Text style={styles.menu_name}>{route.params.menu.name}</Text>
+      <Text style={styles.menu_name}>{menu.name}</Text>
       <Input label="Name" onChangeText={value => setName(value)} />
       <Input
         label="Description"
@@ -39,7 +50,11 @@ export default function CreateMenu() {
         label="Ingredients"
         onChangeText={value => setIngredients(value)}
       />
-      <Input label="Price" onChangeText={value => setPrice(value)} />
+      <Input
+        label="Price"
+        onChangeText={value => setPrice(value)}
+        keyboardType="decimal-pad"
+      />
       <Button title="Apply Food" onPress={handleNavigateDetail} />
     </SafeAreaView>
   );

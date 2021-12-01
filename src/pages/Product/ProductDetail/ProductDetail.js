@@ -1,4 +1,4 @@
-import {useRoute} from '@react-navigation/core';
+import {useRoute} from '@react-navigation/native';
 import React from 'react';
 import {View, SafeAreaView, Text, ScrollView, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';

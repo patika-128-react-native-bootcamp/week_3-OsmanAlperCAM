@@ -1,6 +1,6 @@
 import React from 'react';
 import {SafeAreaView, FlatList, View} from 'react-native';
-import {useNavigation} from '@react-navigation/core';
+import {useNavigation} from '@react-navigation/native';
 
 import styles from './Menu.styles';
 import MenuCard from '../../../components/cards/MenuCard';
