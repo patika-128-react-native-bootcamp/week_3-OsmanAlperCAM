@@ -35,7 +35,7 @@ export default function CreateMenu() {
   }
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.menu_name}>{menu.name}</Text>
       <Input
         label="Name"
