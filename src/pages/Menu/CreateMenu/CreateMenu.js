@@ -9,50 +9,53 @@ import styles from './CreateMenu.styles';
 
 export default function CreateMenu() {
   const navigation = useNavigation();
-  const [name, setName] = useState();
-  const [description, setDescription] = useState();
-  const [ingredients, setIngredients] = useState();
-  const [price, setPrice] = useState();
+
+  const [foodDetail, setFoodDetail] = useState({
+    name: '',
+    description: '',
+    ingredients: '',
+    price: '',
+  });
 
   const route = useRoute();
   const {menu} = route.params;
 
   function handleNavigateDetail() {
+    console.log(foodDetail);
     if (
-      name === undefined ||
-      description === undefined ||
-      ingredients === undefined ||
-      price === undefined
+      foodDetail.name === '' ||
+      foodDetail.description === '' ||
+      foodDetail.ingredients === '' ||
+      foodDetail.price === ''
     ) {
       Alert.alert('Alanlar Boş Geçilemez');
       return;
     }
-    
-    const foodDetail = {
-      name: name,
-      description: description,
-      ingredients: ingredients,
-      price: price,
-    };
-
     navigation.navigate('MenuDetailPage', {foodDetail});
   }
 
   return (
     <SafeAreaView>
       <Text style={styles.menu_name}>{menu.name}</Text>
-      <Input label="Name" onChangeText={value => setName(value)} />
+      <Input
+        label="Name"
+        onChangeText={value => setFoodDetail({...foodDetail, name: value})}
+      />
       <Input
         label="Description"
-        onChangeText={value => setDescription(value)}
+        onChangeText={value =>
+          setFoodDetail({...foodDetail, description: value})
+        }
       />
       <Input
         label="Ingredients"
-        onChangeText={value => setIngredients(value)}
+        onChangeText={value =>
+          setFoodDetail({...foodDetail, ingredients: value})
+        }
       />
       <Input
         label="Price"
-        onChangeText={value => setPrice(value)}
+        onChangeText={value => setFoodDetail({...foodDetail, price: value})}
         keyboardType="decimal-pad"
       />
       <Button title="Apply Food" onPress={handleNavigateDetail} />

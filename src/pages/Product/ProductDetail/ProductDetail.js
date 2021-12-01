@@ -23,10 +23,10 @@ export default function ProductDetail() {
           {product.isPopular && <Icon name="star" color="orange" size={25} />}
         </View>
         <ScrollView horizontal bounces={false}>
-          {product.ingredients.map((ing, ind) => {
+          {product.ingredients.map((ingredient, index) => {
             return (
-              <View key={ind} style={styles.badge_container}>
-                <Text style={styles.badge_label}>{ing}</Text>
+              <View key={index} style={styles.badge_container}>
+                <Text style={styles.badge_label}>{ingredient}</Text>
               </View>
             );
           })}
