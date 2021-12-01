@@ -21,7 +21,6 @@ export default function CreateMenu() {
   const {menu} = route.params;
 
   function handleNavigateDetail() {
-    console.log(foodDetail);
     if (
       foodDetail.name === '' ||
       foodDetail.description === '' ||

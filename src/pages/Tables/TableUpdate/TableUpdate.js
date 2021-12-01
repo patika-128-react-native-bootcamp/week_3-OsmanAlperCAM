@@ -18,7 +18,6 @@ export default function TableUpdate() {
   const navigation = useNavigation();
   const route = useRoute();
   const {table} = route.params;
-  console.log(table.orders);
 
   function handleCloseTable() {
     navigation.navigate('TablesPage', {
