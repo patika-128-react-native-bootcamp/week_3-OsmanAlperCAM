@@ -19,6 +19,7 @@ export default function Products() {
       <FlatList
         data={mockData.products}
         renderItem={renderProductCard}
+        keyExtractor={item => item.id}
       />
     </SafeAreaView>
   );
