@@ -9,6 +9,7 @@ import mock_data from '../../../MOCK_DATA.json';
 export default function Table() {
   const route = useRoute();
   const navigation = useNavigation();
+
   const [tables, setTables] = useState(mock_data.tables);
 
   function handleNavigateTableDetail(selectedTable) {
@@ -25,7 +26,9 @@ export default function Table() {
     }
 
     const {updatedTable} = route.params;
-    const updatedTableIndex = tables.findIndex(t => t.id === updatedTable.id);
+    const updatedTableIndex = tables.findIndex(
+      table => table.id === updatedTable.id,
+    );
     const newTables = [...tables];
     newTables[updatedTableIndex] = updatedTable;
     setTables(newTables);
