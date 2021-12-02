@@ -1,19 +1,11 @@
 import {StyleSheet, Dimensions} from 'react-native';
 
-export default StyleSheet.create({
-  active_container: {
+const base = StyleSheet.create({
+  container: {
     flex: 1,
     margin: 10,
     borderWidth: 2,
     borderRadius: 10,
-    borderColor: 'green',
-  },
-  disactive_container: {
-    flex: 1,
-    margin: 10,
-    borderWidth: 2,
-    borderRadius: 10,
-    borderColor: '#bdbdbd'
   },
   image: {
     height: Dimensions.get('window').height / 6,
@@ -37,3 +29,28 @@ export default StyleSheet.create({
     fontSize: 10,
   },
 });
+
+export default {
+  active: StyleSheet.create({
+    ...base,
+    container: {
+      ...base.container,
+      borderColor: 'green',
+    },
+    name_container: {
+      ...base.name_container,
+      backgroundColor: '#a5d6a7',
+    },
+  }),
+  not_active: StyleSheet.create({
+    ...base,
+    container: {
+      ...base.container,
+      borderColor: '#bdbdbd',
+    },
+    name_container: {
+      ...base.name_container,
+      backgroundColor: '#bdbdbd',
+    },
+  }),
+};
