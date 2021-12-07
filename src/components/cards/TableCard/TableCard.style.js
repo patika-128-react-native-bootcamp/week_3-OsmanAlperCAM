@@ -50,7 +50,6 @@ export default {
     },
     name_container: {
       ...base.name_container,
-      backgroundColor: '#bdbdbd',
     },
   }),
 };

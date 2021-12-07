@@ -27,7 +27,6 @@ export default function CreateMenu() {
       foodDetail.ingredients === '' ||
       foodDetail.price === ''
     ) {
-      Alert.alert('Alanlar Boş Geçilemez');
       return;
     }
     navigation.navigate('MenuDetailPage', {foodDetail});

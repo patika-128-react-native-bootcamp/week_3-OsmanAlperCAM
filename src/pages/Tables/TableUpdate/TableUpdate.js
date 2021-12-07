@@ -1,4 +1,4 @@
-import {useNavigation, useRoute} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/core';
 import React from 'react';
 import {SafeAreaView, View, Text} from 'react-native';
 import Button from '../../../components/Button';
@@ -19,32 +19,29 @@ export default function TableUpdate() {
   const route = useRoute();
   const {table} = route.params;
 
+  const {price: total} = table.orders.reduce(
+    (previous, current) => ({
+      price: previous.price + current.price,
+    }),
+    {price: 0},
+  );
+
   function handleCloseTable() {
     navigation.navigate('TablesPage', {
       updatedTable: {...table, isActive: false},
     });
   }
-  try {
-    const {price: total} = table.orders.reduce((previous, current) => ({
-      price: previous.price + current.price,
-    }));
-    return (
-      <SafeAreaView style={styles.container}>
-        <View style={styles.container}>
-          <Text style={styles.name_label}>{table.name}</Text>
-          {table.orders.map(mapOrders)}
-          <Text style={styles.total}>Total {total} TL</Text>
-        </View>
-        {table.isActive && (
-          <Button title="Close Table" onPress={handleCloseTable} />
-        )}
-      </SafeAreaView>
-    );
-  } catch (error) {
-    return (
-      <View style={styles.error_container}>
-        <Text style={styles.error_text}>Bu masa boş...</Text>
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
+        <Text style={styles.name_label}>{table.name}</Text>
+        {table.orders.map(mapOrders)}
+        <Text style={styles.total}>Total {total} TL</Text>
       </View>
-    );
-  }
+      {table.isActive && (
+        <Button title="Close Table" onPress={handleCloseTable} />
+      )}
+    </SafeAreaView>
+  );
 }
