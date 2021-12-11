@@ -30,4 +30,13 @@ export default StyleSheet.create({
     marginTop: 10,
     textAlign: 'right',
   },
+  error_container: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex:1,
+  },
+  error_text:{
+    fontWeight: 'bold',
+    fontSize: 20,
+  }
 });

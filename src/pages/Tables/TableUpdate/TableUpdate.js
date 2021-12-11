@@ -5,10 +5,10 @@ import Button from '../../../components/Button';
 
 import styles from './TableUpdate.styles';
 
-const mapOrders = (order, i) => (
-  <View key={i} style={styles.order_container}>
+const mapOrders = (order, index) => (
+  <View key={index} style={styles.order_container}>
     <Text style={styles.order_name}>⏺ {order.name}</Text>
-    <Text key={i} style={styles.order_price}>
+    <Text key={index} style={styles.order_price}>
       {order.price} TL
     </Text>
   </View>
@@ -19,9 +19,12 @@ export default function TableUpdate() {
   const route = useRoute();
   const {table} = route.params;
 
-  const {price: total} = table.orders.reduce((p, c) => ({
-    price: p.price + c.price,
-  }));
+  const {price: total} = table.orders.reduce(
+    (previous, current) => ({
+      price: previous.price + current.price,
+    }),
+    {price: 0},
+  );
 
   function handleCloseTable() {
     navigation.navigate('TablesPage', {
